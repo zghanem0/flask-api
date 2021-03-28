@@ -16,18 +16,22 @@
 
 
 #to get all details of all:
+```
 -the api : /
 -the body: nothing!
+```
 
 
 #to show all books
+```
 -the api : /show_books
 -the body: nothing!
-
+```
 #to get details about specific book
+
+```
 -the api : /book
 -the body:
-```
 {
     "title":"book_name"
 }
@@ -35,9 +39,10 @@
 
 
 #to add new book
+
+```
 -the api : /add_one
 -the body:
-```
 {
     "title":"book_name"
 }
@@ -45,9 +50,9 @@
 
 
 #to delete book
+```
 -the api : /delete_book
 -the body:
-```
 {
     "title" : "Hellion"  # "title":
 }
