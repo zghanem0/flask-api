@@ -1,7 +1,7 @@
 //def name      = "main"
 def git_branch      = "staging"
 def namespace       = "staging"
-def gitUrl          = ""
+def gitUrl          = "https://github.com/pro-ghanem/flask-api"
 def serviceName     = "csv"
 def imageTag        = "${serviceName}:${namespace}_${BUILD_NUMBER}"
 //def registryId      = 604159183131
@@ -11,25 +11,18 @@ def ecrUrl          = "686777881901.dkr.ecr.ap-southeast-1.amazonaws.com"
 //def awsProfile      = "default"
 def k8sContext      = "arn:aws:eks:ap-southeast-1:686777881901:cluster/Prod-cluster"
 def awsCredsId      = "ecr-credentials"
-def helmDir         = "staging/deployment/csv/helm"
+def helmDir         = "helm"
 def gitCred         = "chadminfrontend"
 node {
   try {
     notifyBuild('STARTED')
     stage ("Checkout"){
-      checkout([$class: 'GitSCM', branches: [[name: "${git_branch}"]], extensions: [], userRemoteConfigs: [[credentialsId: "" , url: "${gitUrl}"]]])    
-      sh "cp -r ~/workspace/${JOB_NAME}@script/* ."
+      checkout([$class: 'GitSCM', branches: [[name: "${git_branch}"]], extensions: [], userRemoteConfigs: [[credentialsId: "chadminfrontend" , url: "${gitUrl}"]]])    
     
 withCredentials([file(credentialsId: 'csvstagdocker', variable: 'csvstagdocker')]) {
     
   sh  " mv \$csvstagdocker Dockerfile"
-   }
-
-stage('copying the images'){
-    sh 'sudo rsync -zavur  -e ssh root@10.80.1.188:/home/ftpusr/uploads /var/lib/jenkins/workspace/STG_eks_csv_uploade/'
-    sh 'sudo chown -R jenkins:jenkins /var/lib/jenkins/workspace/STG_eks_csv_uploade/ '
-    
-} 
+   } 
     
     }
 
