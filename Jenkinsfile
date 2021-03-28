@@ -17,7 +17,7 @@ node {
   try {
     notifyBuild('STARTED')
     stage ("Checkout"){
-      checkout([$class: 'GitSCM', branches: [[name: "${git_branch}"]], extensions: [], userRemoteConfigs: [[credentialsId: "chadminfrontend" , url: "${gitUrl}"]]])    
+      checkout([$class: 'GitSCM', branches: [[name: "${git_branch}"]], extensions: [], userRemoteConfigs: [[credentialsId: "" , url: "${gitUrl}"]]])    
     
 withCredentials([file(credentialsId: 'csvstagdocker', variable: 'csvstagdocker')]) {
     
