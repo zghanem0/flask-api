@@ -1,5 +1,5 @@
 //def name      = "main"
-def git_branch      = "staging"
+def git_branch      = "main"
 def namespace       = "staging"
 def gitUrl          = "https://github.com/pro-ghanem/flask-api"
 def serviceName     = "flask-api"
