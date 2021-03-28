@@ -5,9 +5,10 @@
 
 ## Notes
 
-#regarding the logs : added the Elapsed_time and the fields of logs :
- timestamp, Elapsed_time, remote-addr, request-method,request-scheme, full_path, status
+regarding the logs : added the Elapsed_time and the fields of logs compound from:
 ``` 
+timestamp, Elapsed_time, remote-addr, request-method,request-scheme, full_path, status
+
 [2021-03-28 06:29:24,945] ERROR in app: [2021-Mar-28 06:29] 764.2476670742035 127.0.0.1 GET http /book? 200 OK 
 
 ```
