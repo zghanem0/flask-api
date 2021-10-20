@@ -47,9 +47,10 @@ def add_one():
         if request.method == 'POST':
             for bok in list(all_books):
                 if 'title' in bok:
+                    # u can use  request.json.get('title') instead of request.get_json()["title"]
                     if request.get_json()["title"] == bok["title"]:
                         return "the book already exist"
-
+        # request.json.get()  instead of request.get_json()
         books.insert_one(request.get_json())
         return "added successfully"
     except BaseException as error:
@@ -66,6 +67,7 @@ def get_book():
         if request.method == 'GET':
             for bok in list(all_books):
                 if 'title' in bok:
+                            # request.json.get('title')  instead of request.get_json()["title"] 
                     if request.get_json()["title"] == bok["title"]:
                         return jsonify({"book details": bok})
 
@@ -87,6 +89,7 @@ def delete_one():
     # print(list(books.find()))
     try:
         for b in all_books:
+            # request.json.get('title')  instead of request.get_json()["title"] 
             if request.get_json()["title"] == b['title']:
                 book = books.delete_one({'title': request.get_json()["title"]})
                 return str(f"delete successfully with this result : {book.raw_result}")
